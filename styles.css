@@ -195,6 +195,17 @@ h2{margin:0;font-family:var(--font-heading);font-size:clamp(26px,3.2vw,36px);fon
 .case-toggle:hover .case-rule{background:var(--red-light)}
 .case-toggle[aria-expanded="true"] .case-arrow{transform:rotate(180deg);border-color:var(--red-light);color:var(--red-light)}
 
+@keyframes arrowHint{
+  0%,20%,100%{transform:translateY(0)}
+  8%{transform:translateY(4px)}
+  14%{transform:translateY(0)}
+}
+.case-arrow svg{animation:arrowHint 2.4s ease-in-out infinite}
+.case-toggle:hover .case-arrow svg,
+.case-toggle[aria-expanded="true"] .case-arrow svg{animation:none}
+#case-header-2 .case-arrow svg{animation-delay:.5s}
+#case-header-3 .case-arrow svg{animation-delay:1s}
+
 .case-panel{max-height:0;overflow:hidden;transition:max-height .35s linear}
 .case-panel-inner{padding-top:clamp(28px,4vw,40px)}
 .case h2{font-size:clamp(26px,4vw,44px);letter-spacing:-0.02em;line-height:1.08;max-width:24ch;text-transform:none}
