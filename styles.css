@@ -105,9 +105,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.contact-item:focus-visi
   border-radius:var(--radius-sharp);
   transition:filter var(--motion),border-color var(--motion),color var(--motion),background var(--motion);
 }
-.btn-primary{background:var(--red-light);color:var(--bg)}
-.btn-primary:hover{filter:brightness(1.1);color:var(--bg)}
-.btn-primary:active{filter:brightness(.9)}
+.btn-primary{border-radius:var(--radius-pill);background:linear-gradient(90deg,var(--red-dark),var(--red-light));color:var(--white)}
+.btn-primary:hover{filter:brightness(1.12);color:var(--white)}
+.btn-primary:active{filter:brightness(.92)}
 .btn-ghost{border:1px solid var(--border);color:var(--text)}
 .btn-ghost:hover{border-color:var(--text);color:var(--text)}
 @media (max-width:767px){
