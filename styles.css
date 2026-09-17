@@ -180,10 +180,10 @@ h2{margin:0;font-family:var(--font-heading);font-size:clamp(26px,3.2vw,36px);fon
 }
 .case-tag{
   display:inline-flex;align-items:center;gap:12px;padding:11px 16px 11px 22px;
-  border-radius:var(--radius-pill);background:var(--red-light);color:var(--bg);
+  border-radius:var(--radius-pill);background:linear-gradient(90deg,var(--red-dark),var(--red-light));color:var(--white);
   font-family:var(--font-heading);font-size:clamp(14px,1.6vw,16px);font-weight:700;letter-spacing:.08em;
 }
-.case-tag-num{display:inline-flex;width:26px;height:26px;border-radius:var(--radius-circle);background:rgba(14,12,11,.22);align-items:center;justify-content:center;font-size:12px;letter-spacing:0}
+.case-tag-num{display:inline-flex;width:26px;height:26px;border-radius:var(--radius-circle);background:rgba(255,255,255,.2);align-items:center;justify-content:center;font-size:12px;letter-spacing:0;color:var(--white)}
 .case-rule{flex:1;height:1px;background:var(--border);transition:background var(--motion)}
 .case-arrow{
   display:inline-flex;align-items:center;justify-content:center;flex:none;
