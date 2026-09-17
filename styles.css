@@ -177,12 +177,28 @@ h2{margin:0;font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-0.025
 .education-title{font-size:15.5px;font-weight:500}
 .education-inst{font-size:13px;color:var(--muted)}
 
-/* ---------- case sections ---------- */
-.case{padding:clamp(56px,8vw,112px) 0 clamp(40px,6vw,64px);border-top:1px solid var(--border)}
-.case-tag-row{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+/* ---------- case sections (collapsible) ---------- */
+.case{padding:clamp(32px,5vw,48px) 0;border-top:1px solid var(--border)}
+.case-toggle{
+  display:flex;align-items:center;gap:14px;width:100%;
+  background:none;border:none;padding:0;margin:0;cursor:pointer;
+  font:inherit;color:inherit;text-align:left;
+}
 .case-tag{display:inline-flex;align-items:center;gap:12px;padding:10px 14px 10px 22px;border-radius:var(--radius-pill);background:linear-gradient(90deg,var(--red-dark),var(--red-light));color:var(--white);font-size:clamp(15px,1.8vw,19px);font-weight:600;letter-spacing:.1em;box-shadow:0 6px 18px rgba(142,27,44,.22)}
 .case-tag-num{display:inline-flex;width:28px;height:28px;border-radius:var(--radius-circle);background:rgba(255,255,255,.18);align-items:center;justify-content:center;font-size:13px;letter-spacing:0}
-.case-rule{flex:1;height:1px;background:var(--border)}
+.case-rule{flex:1;height:1px;background:var(--border);transition:background var(--motion)}
+.case-arrow{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  width:32px;height:32px;border-radius:var(--radius-circle);
+  border:1px solid var(--border);color:var(--muted);
+  transition:transform var(--motion),border-color var(--motion),color var(--motion),background var(--motion);
+}
+.case-toggle:hover .case-arrow{border-color:var(--red);color:var(--red)}
+.case-toggle:hover .case-rule{background:var(--red-light)}
+.case-toggle[aria-expanded="true"] .case-arrow{transform:rotate(180deg);border-color:var(--red);color:var(--red);background:rgba(142,27,44,.08)}
+
+.case-panel{max-height:0;overflow:hidden;transition:max-height .35s linear}
+.case-panel-inner{padding-top:clamp(28px,4vw,40px)}
 .case h2{font-size:clamp(28px,4.2vw,50px);letter-spacing:-0.03em;line-height:1.06;max-width:24ch}
 .case-meta{margin:18px 0 0;font-size:14.5px;color:var(--muted)}
 
@@ -222,10 +238,18 @@ h2{margin:0;font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-0.025
 .lead{margin:18px 0 0;font-size:clamp(16px,2vw,19px);color:var(--muted);line-height:1.5;max-width:52ch}
 .sub{margin:14px 0 0;font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:68ch}
 
-.process-list{display:grid;gap:14px;margin-top:clamp(32px,4.5vw,48px)}
-.process-step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:clamp(22px,3vw,30px);border:1px solid var(--border);border-radius:var(--radius-rounded)}
+.process{--proc-pad:clamp(22px,3vw,30px)}
+.process-list{position:relative;display:grid;gap:14px;margin-top:clamp(32px,4.5vw,48px)}
+.process-line{
+  position:absolute;top:0;width:2px;
+  background:linear-gradient(to bottom,var(--red),var(--red-light));
+  z-index:0;pointer-events:none;
+  left:calc(var(--proc-pad) + 22px);
+}
+.process-step{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);padding:var(--proc-pad);border:1px solid var(--border);border-radius:var(--radius-rounded)}
 .process-step--tint{background:var(--surface)}
-.process-num{width:44px;height:44px;border-radius:var(--radius-circle);background:linear-gradient(90deg,var(--red),var(--red-light));color:var(--white);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600}
+.process-step--tint .process-num{box-shadow:0 0 0 4px var(--surface)}
+.process-num{position:relative;z-index:1;width:44px;height:44px;border-radius:var(--radius-circle);background:linear-gradient(90deg,var(--red),var(--red-light));color:var(--white);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;box-shadow:0 0 0 4px var(--white)}
 .process-step h3{margin:0 0 10px;font-size:clamp(17px,2vw,21px);font-weight:600;letter-spacing:-0.015em}
 .process-step p{font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:76ch}
 .process-output{margin-top:12px!important;font-size:13.5px;font-weight:500;color:var(--red)}
